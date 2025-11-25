@@ -1,0 +1,25 @@
+AI-Fraud-Detection/
+│
+├─ Main.java
+├─ ui/MainController.java
+│
+├─ model/
+│   ├─ Transaction.java
+│   └─ User.java
+│
+├─ ai/
+│   ├─ FraudDetector.java
+│   ├─ FraudDetectorBase.java
+│   └─ ZScoreFraudDetector.java
+│
+├─ db/Database.java
+├─ dao/TransactionDAO.java
+├─ dao/UserDAO.java
+│
+├─ service/DetectionService.java
+├─ util/CSVLoader.java
+├─ exceptions/FraudAnalysisException.java
+│
+└─ resources/
+    ├─ app.fxml
+    └─ fraud.db
