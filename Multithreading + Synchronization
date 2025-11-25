@@ -1,0 +1,31 @@
+package service;
+
+import ai.FraudDetector;
+import dao.TransactionDAO;
+import model.Transaction;
+import java.util.List;
+
+public class DetectionService extends Thread {
+
+    private final FraudDetector detector;
+    private final TransactionDAO dao;
+
+    public DetectionService(FraudDetector detector, TransactionDAO dao){
+        this.detector = detector;
+        this.dao = dao;
+    }
+
+    @Override
+    public synchronized void run(){
+        try{
+            List<Transaction> data = dao.getAllTransactions();
+            for(Transaction t : data){
+                boolean fraud = detector.analyze(t, data);
+                dao.updateFlag(t.getId(), fraud);
+                System.out.println("Transaction " + t.getId() + " Fraud? " + fraud);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+}
