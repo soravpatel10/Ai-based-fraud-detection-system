@@ -1,0 +1,24 @@
+package util;
+
+import java.io.*;
+import java.util.*;
+
+public class CSVLoader<T> {
+
+    public interface Mapper<T> {
+        T map(String[] data);
+    }
+
+    public List<T> load(String filePath, Mapper<T> mapper) throws Exception {
+        List<T> list = new ArrayList<>();
+        BufferedReader br = new BufferedReader(new FileReader(filePath));
+        String line;
+
+        while((line = br.readLine()) != null){
+            String[] parts = line.split(",");
+            list.add(mapper.map(parts));
+        }
+
+        return list;
+    }
+}
