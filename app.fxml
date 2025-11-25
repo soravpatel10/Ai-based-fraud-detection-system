@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<VBox spacing="20" alignment="CENTER" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" fx:controller="ui.MainController">
+
+    <Label text="AI Based Fraud Detection System" style="-fx-font-size: 22px;"/>
+    <Button fx:id="runBtn" text="Run AI Fraud Detection"/>
+</VBox>
